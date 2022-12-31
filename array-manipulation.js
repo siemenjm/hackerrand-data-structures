@@ -62,33 +62,28 @@
  */
 
 function arrayManipulation(n, queries) {
-  // Create an array of 0's of length n
-  let arr = [];
-  for (let i = 0; i < n; i++) {
-    arr.push(0);
-  }
+  let arr = new Array(n).fill(0);
 
   // loop through all of the queries
   queries.forEach((query) => {
-    let a = query[0] - 1;
-    let b = query[1];
-    let k = query[2];
+    const [a, b, k] = query;
 
-    // Add k to values at arr[a] through arr[b] (exclusive)
-    for (let i = a; i < b; i++) {
-      arr[i] += k;
-    }
+    // Add k to value at arr[a-1], subtract k at arr[b] (exclusive)
+    arr[a - 1] += k;
+    arr[b] -= k;
+    console.log(arr);
   });
 
-  // Find max value in array
-  let maxValue;
+  let max = 0;
+  let sum = 0;
   for (let i = 0; i < arr.length; i++) {
-    if (arr[i] > maxValue || maxValue == undefined) {
-      maxValue = arr[i];
+    sum += arr[i];
+    if (sum > max) {
+      max = sum;
     }
   }
 
-  return maxValue;
+  return max;
 }
 
 console.log(
