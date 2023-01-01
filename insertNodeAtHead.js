@@ -11,10 +11,24 @@
  */
 
 class SinglyLinkedListNode {
-  constructor(data, next = null) {
+  constructor(data) {
     this.data = data;
-    this.next = next;
+    this.next = null;
   }
 }
 
-function insertNodeAtHead(head, data) {}
+function insertNodeAtHead(head, data) {
+  const newHead = new SinglyLinkedListNode(data);
+  newHead.next = head;
+
+  return newHead;
+}
+
+let linkedList = null;
+
+linkedList = insertNodeAtHead(linkedList, 5);
+linkedList = insertNodeAtHead(linkedList, 10);
+linkedList = insertNodeAtHead(linkedList, 15);
+linkedList = insertNodeAtHead(linkedList, 20);
+
+console.log(linkedList);
