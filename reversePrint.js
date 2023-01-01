@@ -21,19 +21,29 @@ class SinglyLinkedListNode {
   }
 }
 
-function reversePrint(llist) {
-  let dataStorageArr = [];
-  dataStorageArr.push(llist.data);
+// function reversePrint(llist) {
+//   let dataStorageArr = [];
+//   dataStorageArr.push(llist.data);
 
-  let currentNode = llist;
-  while (currentNode.next) {
-    currentNode = currentNode.next;
-    dataStorageArr.unshift(currentNode.data);
+//   let currentNode = llist;
+//   while (currentNode.next) {
+//     currentNode = currentNode.next;
+//     dataStorageArr.unshift(currentNode.data);
+//   }
+
+//   dataStorageArr.forEach((dataPoint) => {
+//     console.log(dataPoint);
+//   });
+// }
+
+function reversePrint(llist) {
+  if (llist.next == null) {
+    console.log(llist.data);
+    return;
   }
 
-  dataStorageArr.forEach((dataPoint) => {
-    console.log(dataPoint);
-  });
+  reversePrint(llist.next);
+  console.log(llist.data);
 }
 
 let llist = new SinglyLinkedListNode(5);
