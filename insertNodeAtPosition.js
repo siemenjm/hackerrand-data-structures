@@ -26,5 +26,34 @@ class SinglyLinkedListNode {
 }
 
 function insertNodeAtPosition(llist, data, position) {
-  // Write your code here
+  const newNode = new SinglyLinkedListNode(data);
+
+  if (position === 0) {
+    newNode.next = llist;
+    return newNode;
+  }
+
+  let currentNode = llist;
+  let index = 0;
+
+  while (index < position - 1) {
+    currentNode = currentNode.next;
+    index++;
+  }
+
+  const nextNode = currentNode.next;
+
+  currentNode.next = newNode;
+  newNode.next = nextNode;
+
+  return llist;
 }
+
+let llist = new SinglyLinkedListNode(5);
+llist = insertNodeAtPosition(llist, 10, 1);
+llist = insertNodeAtPosition(llist, 15, 2);
+llist = insertNodeAtPosition(llist, 20, 3);
+console.log(llist);
+
+llist = insertNodeAtPosition(llist, 7, 1);
+console.log(llist);
