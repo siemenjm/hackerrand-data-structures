@@ -25,5 +25,33 @@ class SinglyLinkedListNode {
 }
 
 function getNode(llist, positionFromTail) {
-  // Write your code here
+  let currentNode = llist;
+  let position = 0;
+
+  while (currentNode.next) {
+    currentNode = currentNode.next;
+    position++;
+  }
+
+  let positionFromHead = position - positionFromTail;
+
+  currentNode = llist;
+  while (positionFromHead > 0) {
+    currentNode = currentNode.next;
+    positionFromHead--;
+  }
+
+  return currentNode.data;
 }
+
+let testList = new SinglyLinkedListNode(1);
+testList.next = new SinglyLinkedListNode(3);
+testList.next.next = new SinglyLinkedListNode(7);
+testList.next.next.next = new SinglyLinkedListNode(9);
+testList.next.next.next.next = new SinglyLinkedListNode(15);
+
+console.log(getNode(testList, 4));
+console.log(getNode(testList, 3));
+console.log(getNode(testList, 2));
+console.log(getNode(testList, 1));
+console.log(getNode(testList, 0));
