@@ -23,34 +23,46 @@ class SinglyLinkedListNode {
 }
 
 function removeDuplicates(llist) {
-  let leadingNode = llist;
-  if (!leadingNode.next) {
-    return llist;
-  }
+  // let leadingNode = llist;
+  // if (!leadingNode.next) {
+  //   return llist;
+  // }
 
-  leadingNode = leadingNode.next;
-  let trailingNode = llist;
+  // leadingNode = leadingNode.next;
+  // let trailingNode = llist;
 
-  while (leadingNode) {
-    console.log('trailing: ', trailingNode, ' leading: ', leadingNode);
-    if (trailingNode.data === leadingNode.data) {
-      while (trailingNode.data === leadingNode.data) {
-        if (leadingNode.next) {
-          leadingNode = leadingNode.next;
-        } else {
-          break;
-        }
-      }
+  // while (leadingNode) {
+  //   console.log('trailing: ', trailingNode, ' leading: ', leadingNode);
+  //   if (trailingNode.data === leadingNode.data) {
+  //     while (trailingNode.data === leadingNode.data) {
+  //       if (leadingNode.next) {
+  //         leadingNode = leadingNode.next;
+  //       } else {
+  //         break;
+  //       }
+  //     }
 
-      if (leadingNode.data === trailingNode.data) {
-        trailingNode.next = null;
-        leadingNode = null;
-      } else {
-        trailingNode.next = leadingNode;
-      }
+  //     if (leadingNode.data === trailingNode.data) {
+  //       trailingNode.next = null;
+  //       leadingNode = null;
+  //     } else {
+  //       trailingNode.next = leadingNode;
+  //     }
+  //   } else {
+  //     leadingNode = leadingNode.next;
+  //     trailingNode = trailingNode.next;
+  //   }
+  // }
+
+  // return llist;
+
+  let currentNode = llist;
+
+  while (currentNode.next) {
+    if (currentNode.data === currentNode.next.data) {
+      currentNode.next = currentNode.next.next;
     } else {
-      leadingNode = leadingNode.next;
-      trailingNode = trailingNode.next;
+      currentNode = currentNode.next;
     }
   }
 
